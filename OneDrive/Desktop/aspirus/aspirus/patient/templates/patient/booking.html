@@ -1,0 +1,77 @@
+{% extends 'patient/home.html'%}
+{% block content %}
+
+<div class="container-fluid" style="background-color: aliceblue;"><div class="row" ><div class="col-3 "></div><div class="col-6">
+    
+    <form  method="post" >
+    {% csrf_token %}
+    <h3 style="text-align: center;">Book An Appointment</h3><hr>
+    
+    <br>    
+    <div class="form-group " >
+      <label for="">Name</label>
+      <input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" name="name">
+    </div><br>
+    <div class="form-group">
+      <label for="">Mobile Number</label>
+      <input type="number" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" name="number">
+    </div><br>
+    <div class="form-group">
+        <label for="">Time</label>
+        <!-- <input style="width: 720px;" class="time" type="time" name="time" id="" > -->
+        <select  style="width:720px;" class="form-control" name="time" type="time" id="">
+          <option value="09:00:00">9:00am</option>
+          <option value="10:00:00">10:00am</option>
+          <option value="11:00:00">11:00am</option>
+          <option value="12:00:00">12:00pm</option>
+          <option value="13:00:00">1:00pm</option>
+      </select>
+      
+    </div><br>
+    <!-- <div class="form-group">
+        <label for="">Select Specialization</label>
+        <select class="form-select" aria-label=""  name="Specialization">
+            
+                 <option value="nil">Select</option>
+                 <option value="Orthopaedics">Orthopedics</option>
+                 <option value="cardiology">Cardiology</option>
+                 <option value="Neurology">Neurology</option>
+                 <option value="Pediatrics">Pediatrics</option>
+                
+        </select><br>
+    </div> -->
+    <div class="form-group">
+      <label for="">Date</label>
+      <input type="date" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" placeholder="YYYY-MM-DD" name="date">
+    </div><br>
+
+    <div class="form-group">
+        <label for="">Select Doctor</label>
+        <select class="form-select" aria-label=""  name="doctor">
+            
+          {% for i in doctors %}
+          <option value="{{i.id}}">{{i.name}} ({{i.specialization}})</option>
+          {% endfor %}
+
+        </select>
+    </div>
+    <br>
+    <div class="form-group">
+       <textarea name="message" id="Message" cols="95" rows="5" placeholder="Type Any Message"></textarea>
+       <br>
+       <label for=""><p style="color: darkred;">{{msg}}</p></label>
+       <button type="submit" class="btn btn-primary" style="width: 720px;">Book Now</button>
+       <br><br>
+       <a style="width: 720px;" class="btn btn-primary" href="{% url 'patient:booking_status' %}">Check Booking Status</a>
+    </div>
+</form></div></div><br><br><br><br><br><br><br><br>
+</div>
+  
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'patient/home.html'%}
+{% block content %}
+<div class="container-fluid" style="background-color: aliceblue;">
+<h3 style="text-align: center;">Booking List</h3><hr><br>
+<div class="row" >
+    <div class="col-3"></div>
+    <div class="col-6">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Doctor</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for i in patients %}
+              <tr>
+                <th scope="row">{{i.name}}</th>
+                <td>{{i.date}}</td>
+                <td>{{i.time}}</td>
+                <td>{{i.doctor}}</td>
+                <td>{{i.status}}</td>
+              </tr>
+            {% endfor %}
+              
+            </tbody>
+          </table>
+    </div>
+    <div class="col-3"></div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+ </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
